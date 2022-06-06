@@ -1,0 +1,11 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t node82/tacos -f Dockerfile .
+  
+language: generic
+
+script:
+  - docker run -e CI=true node82/tacos npm run test
