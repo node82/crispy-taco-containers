@@ -9,3 +9,13 @@ language: generic
 
 script:
   - docker run -e CI=true node82/tacos npm run test
+
+deploy:
+   provider: elasticbeanstalk
+   region : "us-east-1"
+   app: "dockedtacos"
+   env: "taco-env"
+   bucket_name: "elasticbeanstalk-us-east-1-298382983982"
+   backet_path: "dockedtacos"
+   on:
+     branch: master
